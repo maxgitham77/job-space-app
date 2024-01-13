@@ -1,8 +1,8 @@
 name: Publish
 on:
-  branches: [master]
+  branches: [main]
 pull_request:
-  branches: [master]
+  branches: [main]
 jobs:
   publish:
     runs-on: ubuntu-latest
