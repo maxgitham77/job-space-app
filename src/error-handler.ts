@@ -37,7 +37,7 @@ export abstract class CustomError extends Error {
 
 export class BadRequestError extends CustomError {
   statusCode = StatusCodes.BAD_REQUEST;
-  status: 'error';
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -46,7 +46,7 @@ export class BadRequestError extends CustomError {
 
 export class NotFoundError extends CustomError {
   statusCode = StatusCodes.NOT_FOUND;
-  status: 'error';
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -55,7 +55,7 @@ export class NotFoundError extends CustomError {
 
 export class NotAuthorizedError extends CustomError {
   statusCode = StatusCodes.UNAUTHORIZED;
-  status: 'error';
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -64,7 +64,7 @@ export class NotAuthorizedError extends CustomError {
 
 export class FileTooLargeError extends CustomError {
   statusCode = StatusCodes.REQUEST_TOO_LONG;
-  status: 'error';
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
@@ -73,7 +73,7 @@ export class FileTooLargeError extends CustomError {
 
 export class ServerError extends CustomError {
   statusCode = StatusCodes.SERVICE_UNAVAILABLE;
-  status: 'error';
+  status = 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
