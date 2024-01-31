@@ -15,9 +15,9 @@ export interface  IError {
   comingFrom: string;
 }
 
-export abstract class CustumError extends Error {
+export abstract class CustomError extends Error {
   abstract statusCode: number;
-  abstract ststus: string;
+  abstract status: string;
   comingFrom: string;
 
   constructor(message: string, comingFrom: string) {
@@ -29,51 +29,51 @@ export abstract class CustumError extends Error {
     return {
       message: this.message,
       statusCode: this.statusCode,
-      status: this.ststus,
+      status: this.status,
       comingFrom: this.comingFrom,
     }
   }
 }
 
-export class BadRequestError extends CustumError {
+export class BadRequestError extends CustomError {
   statusCode = StatusCodes.BAD_REQUEST;
-  ststus: 'error';
+  status: 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
   }
 }
 
-export class NotFoundError extends CustumError {
+export class NotFoundError extends CustomError {
   statusCode = StatusCodes.NOT_FOUND;
-  ststus: 'error';
+  status: 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
   }
 }
 
-export class NotAuthorizedError extends CustumError {
+export class NotAuthorizedError extends CustomError {
   statusCode = StatusCodes.UNAUTHORIZED;
-  ststus: 'error';
+  status: 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
   }
 }
 
-export class FileTooLargeError extends CustumError {
+export class FileTooLargeError extends CustomError {
   statusCode = StatusCodes.REQUEST_TOO_LONG;
-  ststus: 'error';
+  status: 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
   }
 }
 
-export class ServerError extends CustumError {
+export class ServerError extends CustomError {
   statusCode = StatusCodes.SERVICE_UNAVAILABLE;
-  ststus: 'error';
+  status: 'error';
 
   constructor(message: string, comingFrom: string) {
     super(message, comingFrom);
