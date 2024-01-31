@@ -89,7 +89,7 @@ export { uploads, videoUploads } from './cloudinary-upload';
 export {
   IErrorResponse,
   IError,
-  CustumError,
+  CustomError,
   BadRequestError,
   NotFoundError,
   NotAuthorizedError,
