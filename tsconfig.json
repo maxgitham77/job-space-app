@@ -18,7 +18,7 @@
 	"emitDecoratorMetadata": true,
 	"forceConsistentCasingInFileNames": true,
 	"pretty": true,
-	"resolveJsonModule": true,
+	"resolveJsonModule": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]

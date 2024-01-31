@@ -84,7 +84,7 @@ export {
   ISellerDocument,
 } from './interfaces/seller.interface';
 
-export { uploads, videoUpload } from './cloudinary-upload';
+export { uploads, videoUploads } from './cloudinary-upload';
 
 export {
   IErrorResponse,

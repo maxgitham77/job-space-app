@@ -1,49 +1,36 @@
-import {v2 as cloudinary,  UploadApiErrorResponse, UploadApiResponse} from 'cloudinary';
+import { v2, UploadApiErrorResponse, UploadApiResponse, UploadApiOptions, } from 'cloudinary';
+import { promisify } from 'node:util';
 
-export function uploads(
+type CloudinaryPromise = (
   file: string,
-  public_id?: string,
+  options: UploadApiOptions
+) => Promise<UploadApiResponse | undefined>;
+
+const cloudinaryUpload: CloudinaryPromise = promisify(v2.uploader.upload);
+
+export const uploads = (
+  file: string,
+  public_id: string,
   overwrite?: boolean,
   invalidate?: boolean
-): Promise<UploadApiResponse | UploadApiErrorResponse | undefined> {
-  return new Promise((resolve) => {
-    cloudinary.v2.uploader.upload(
-      file,
-      {
-        public_id,
-        overwrite,
-        invalidate,
-        resource_type: 'auto'
-      },
-      (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
-        if (error) resolve(error);
-        resolve(result);
-      }
-    )
+): Promise<UploadApiErrorResponse | UploadApiResponse | undefined> =>
+  cloudinaryUpload(file, {
+    public_id,
+    overwrite,
+    invalidate,
+    resource_type: 'auto',
   });
-}
 
-export function videoUpload(
+export const videoUploads = (
   file: string,
-  public_id?: string,
+  public_id: string,
   overwrite?: boolean,
   invalidate?: boolean
-): Promise<UploadApiResponse | UploadApiErrorResponse | undefined> {
-  return new Promise((resolve) => {
-    cloudinary.v2.uploader.upload(
-      file,
-      {
-        public_id,
-        overwrite,
-        invalidate,
-        chunk_size: 50000,
-        resource_type: 'video'
-      },
-      (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
-        if (error) resolve(error);
-        resolve(result);
-      }
-    )
+): Promise<UploadApiErrorResponse | UploadApiResponse | undefined> =>
+  cloudinaryUpload(file, {
+    public_id,
+    overwrite,
+    invalidate,
+    chunk_size: 50000,
+    resource_type: 'video',
   });
-}
-
